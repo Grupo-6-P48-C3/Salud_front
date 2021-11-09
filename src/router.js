@@ -8,7 +8,7 @@ import GestionCitas from './components/GestionCitas.vue'
 const routes = [
   {
     path: '/',
-    name: 'root',
+    name: 'App',
     component: App
   },
   {
