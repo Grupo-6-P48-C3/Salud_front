@@ -47,7 +47,11 @@ export default {
                 })
                 .catch((error)=>{
                     if(error.response.status=="401")
-                        alert("Error 401: Credenciales Incorrectas")
+                        Swal.fire({
+                                icon: 'error',
+                                title: 'Oops...',
+                                text: '¡Credenciales Incorrectas!',
+                                })
                 })
         }
     },

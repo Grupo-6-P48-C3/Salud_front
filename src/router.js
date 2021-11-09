@@ -27,7 +27,7 @@ const routes = [
     component: Home
   },
   {
-    path: 'api/gestioncitas/list/',
+    path: '/api/gestioncitas/list/',
     name: 'GestionCitas',
     component: GestionCitas
   },

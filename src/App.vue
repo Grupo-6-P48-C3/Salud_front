@@ -29,9 +29,6 @@
       </router-view>
     </div>
     
-    <div class="footer">
-      <h1>Todos los derechos reservados @Team 6 - Grupo P48 C3</h1>
-    </div>
 
   
   </div>
@@ -70,7 +67,13 @@ export default {
     },
     loadOut:function(){
       localStorage.clear();
-      alert("Has Cerrado Sesión");
+      Swal.fire({
+                position: 'top-center',
+                icon: 'success',
+                title: '¡Has Cerrado Sesión correctamente!',
+                showConfirmButton: false,
+                timer: 2000
+              })
       this.verifyAuth();
       this.$router.push({name:"Login"})
     },
@@ -82,7 +85,11 @@ export default {
       localStorage.setItem("email",data.email);
       localStorage.setItem("token_access",data.token_access);
       localStorage.setItem("token_refresh",data.token_refresh);
-      alert("Verificación Exitosa");
+      Swal.fire(
+                '¡Buen trabajo!',
+                '¡Has Iniciado Sesión!',
+                'success'
+                )
       this.verifyAuth();
     },
     completedSingUp:function(data){
@@ -131,15 +138,11 @@ background-image: url(./assets/background-login.png);
 background-size: cover;
 background-repeat: no-repeat;
 width: 60vw;
-height:850px;
+height:840px;
 float: right;
 position: relative;
 }
 
-.footer{
-  margin-top: 40px;
-  font-size: 6px;
-}
 
 .button_container{
   display: flex;

@@ -9,7 +9,7 @@
               <label for="Name">Nombres Y Apellidos</label>
               <input name="Name" type="text" v-model="user.name" placeholder="Digite su Nombre y Apellido">
               <label for="Email">Email</label>
-              <input name="Email" type="text" v-model="user.email" placeholder="Digite Correo Electrónico">
+              <input name="Email" type="email" v-model="user.email" placeholder="Digite Correo Electrónico">
               <label for="Telefono">Teléfono</label>
               <input name="Telefono" type="number" v-model="user.telephone" placeholder="Digite su Teléfono">
               <label for="Password">Contraseña</label>
@@ -28,10 +28,12 @@ export default {
     data:function(){
         return{
             user:{
-                email:"",
-                password:"",
+                email:"",   
                 name:"",
+                password:"",
                 telephone:"",
+                              
+                
             }
         }
     },
@@ -39,7 +41,7 @@ export default {
     methods:{
         processSingUp:function(){
             axios.post(
-                "https://salud648p.herokuapp.com/api/user/create",
+                "https://salud648p.herokuapp.com/api/user/create/",
                 this.user,
                 {headers:{
                    
@@ -53,8 +55,12 @@ export default {
                     this.$emit('completedSingUp',dataSingUp)
                 })
                 .catch((error)=>{
-                    if(error.response.status=="401")
-                        alert("Error: No fue posible el registro")
+                    if(error.response.status=="401" || error.response.status=="400")
+                        Swal.fire({
+                                icon: 'error',
+                                title: 'Oops...',
+                                text: '¡No fué posible el Registro!',
+                                })
                 })
         }
     },
