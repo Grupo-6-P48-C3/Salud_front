@@ -1,13 +1,7 @@
-const express=require('express')
-const serverstatic=require('serve-static')
-const path=require('path')
-
-const app=express()
-
-app.use('/',serverstatic(path.join(__dirname)))
-app.get(/,*/, function(req,res){
-
-})
-const port=process.env.PORT || 8080
+const express = require('express')
+const serveStatic = require('serve-static')
+const path = require('path')
+const app = express()
+app.use('/', serveStatic(path.join(__dirname, '/dist')))
+const port = process.env.PORT || 8080
 app.listen(port)
-console.log(`app is listening on port: ${port}`)
